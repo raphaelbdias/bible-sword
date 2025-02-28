@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib64
+includedir=${prefix}/include
+
+
+Name: SWORD
+Description: Biblical Text Research Engine
+Version: 1.9.0
+#Libs: -L${libdir} -lsword
+Libs: -L${libdir} -lsword -lz   -L/opt/conda/lib -licui18n -licuuc -licudata    -licuio  -L/opt/conda/lib -lcurl
+Libs.private: -L${libdir} -lsword -lz   -L/opt/conda/lib -licui18n -licuuc -licudata    -licuio  -L/opt/conda/lib -lcurl
+Cflags: -I${includedir}/sword 
+
