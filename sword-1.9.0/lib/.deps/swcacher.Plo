@@ -1,1 +1,8 @@
-# dummy
+swcacher.lo: ../src/mgr/swcacher.cpp /usr/include/stdc-predef.h \
+ ../include/swcacher.h ../include/defs.h
+
+/usr/include/stdc-predef.h:
+
+../include/swcacher.h:
+
+../include/defs.h:
