@@ -2,37 +2,63 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Bible Passage Viewer</title>
+    <title>Bible Passage Viewer - OSIS Output</title>
+
+    <!-- Google Fonts: Charis SIL -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Your own CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <!-- Tippy.js CSS -->
+
+    <!-- Tippy.js CSS (if using interactive tooltips) -->
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
 </head>
 <body>
     <h1>Bible Passage Viewer</h1>
     <form method="post">
         <label>
-            Passage: <input type="text" name="passage" value="{{ passage }}" placeholder="e.g. Jn 3:16">
+            Book:
+            <select name="book">
+                {% for book in bible_books %}
+                <option value="{{ book }}" {% if book == selected_book %}selected{% endif %}>
+                    {{ book }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+        <br>
+        <label>
+            Passage (Chapter:Verse):
+            <input type="text" name="passage" value="{{ passage }}" placeholder="e.g. 1:1">
         </label>
         <br>
         <label>
             Module:
             <select name="module">
                 {% for mod in available_modules %}
-                <option value="{{ mod }}" {% if mod == module %}selected{% endif %}>{{ mod }}</option>
+                <option value="{{ mod }}" {% if mod == module %}selected{% endif %}>
+                    {{ mod }}
+                </option>
                 {% endfor %}
             </select>
         </label>
         <br>
         <label>
-            Keyword (optional): <input type="text" name="keyword" value="{{ keyword }}" placeholder="e.g. God">
+            Keyword (optional):
+            <input type="text" name="keyword" value="{{ keyword }}" placeholder="e.g. God">
         </label>
         <br>
         <input type="submit" value="Get Passage">
     </form>
-    <h2>Passage Text</h2>
+
+    <h2>Passage Text (OSIS Output)</h2>
     <div id="passage-container">
         {{ passage_text | safe }}
     </div>
+
+    <!-- Optional search results section -->
     {% if search_results %}
     <h2>Search Results</h2>
     <ul>
@@ -41,9 +67,12 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <!-- Include Tippy.js and Popper.js -->
+
+    <!-- JS: Popper.js, Tippy.js, Dictionary files, tooltip script -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="{{ url_for('static', filename='js/strongs-greek-dictionary.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/strongs-hebrew-dictionary.js') }}"></script>
     <script src="{{ url_for('static', filename='tooltip.js') }}"></script>
 </body>
 </html>

@@ -1,11 +1,33 @@
+/* =====================================
+   1) Font-Face Declarations for Charis SIL
+   ===================================== */
+   @font-face {
+    font-family: 'Charis SIL';
+    src: url('{{ url_for("static", filename="fonts/CharisSIL-Regular.woff2") }}') format('woff2'),
+         url('{{ url_for("static", filename="fonts/CharisSIL-Regular.woff") }}') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Charis SIL';
+    src: url('{{ url_for("static", filename="fonts/CharisSIL-Bold.woff2") }}') format('woff2'),
+         url('{{ url_for("static", filename="fonts/CharisSIL-Bold.woff") }}') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* =====================================
+   2) Global and Body Styles
+   ===================================== */
 body {
-    font-family: Arial, sans-serif;
     margin: 20px;
     background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
 }
 
 h1, h2 {
     color: #333;
+    margin-bottom: 10px;
 }
 
 form {
@@ -21,9 +43,77 @@ input[type="submit"] {
     padding: 5px 10px;
 }
 
-/* Custom styling for word elements */
+/* =====================================
+   3) Optional Font Classes for Charis SIL
+   ===================================== */
+.charis-sil-regular {
+    font-family: "Charis SIL", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.charis-sil-bold {
+    font-family: "Charis SIL", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.charis-sil-regular-italic {
+    font-family: "Charis SIL", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.charis-sil-bold-italic {
+    font-family: "Charis SIL", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* =====================================
+   4) Passage Container with Charis SIL
+   ===================================== */
+#passage-container {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    /* Force Charis SIL as the main font for the Bible text */
+    font-family: "Charis SIL", serif;
+    /* Adjust line-height and font-size if desired */
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+/* =====================================
+   5) Paragraph & Verse Styling
+   ===================================== */
+/* If your server-side transform wraps each verse in <p> */
+#passage-container p {
+    margin: 0.5em 0;
+    overflow: visible; /* or no overflow property at all */
+
+}
+
+/* Verse number styling */
+.verse-num {
+    font-weight: bold;
+    margin-right: 0.3em;
+    color: #333;
+}
+
+/* =====================================
+   6) OSIS-Related Elements
+   ===================================== */
+/* <q> for quotations */
+q {
+    display: block;
+    margin: 0.5em 0;
+}
+
+/* <w> or .word for morphological data */
 w, .word {
-    display: inline;
+    display: inline-block;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -32,15 +122,30 @@ w:hover, .word:hover {
     color: #fff;
 }
 
-/* Passage container styling */
-#passage-container {
-    border: 1px solid #ccc;
-    background: #fff;
-    padding: 10px;
-    white-space: pre-wrap;
+/* <milestone marker="¶" type="x-p"/> -> paragraph break */
+milestone[marker="¶"] {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-/* Tippy.js custom theme: "apple" */
+/* <transChange> styling: for text that was added */
+transChange[type="added"] {
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Optional: style <chapter> elements if present */
+chapter {
+    display: block;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+/* =====================================
+   7) Tippy.js Theme (apple)
+   ===================================== */
 .tippy-box[data-theme~='apple'] {
     background-color: #f0f0f0;
     color: #000;
