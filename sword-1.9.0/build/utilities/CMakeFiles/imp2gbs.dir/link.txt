@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3   -rdynamic CMakeFiles/imp2gbs.dir/imp2gbs.cpp.o  -o imp2gbs  -Wl,-rpath,/workspaces/bible-sword/sword-1.9.0/build: ../libsword.so.1.9.0 -lz -lbz2 -llzma -lcurl -licudata -licui18n -licuio -licuuc 

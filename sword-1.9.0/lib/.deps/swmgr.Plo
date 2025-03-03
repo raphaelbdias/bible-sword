@@ -21,7 +21,9 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /usr/include/c++/9/stdlib.h /usr/include/c++/9/cstdlib \
+ /usr/include/x86_64-linux-gnu/bits/stdio.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/c++/9/stdlib.h \
+ /usr/include/c++/9/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/cpu_defines.h \
@@ -47,17 +49,21 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h \
  /usr/include/c++/9/bits/std_abs.h /usr/include/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
  /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
@@ -78,7 +84,8 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
  /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
- /usr/include/c++/9/exception /usr/include/c++/9/bits/exception.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/c++/9/exception \
+ /usr/include/c++/9/bits/exception.h \
  /usr/include/c++/9/bits/exception_ptr.h \
  /usr/include/c++/9/bits/exception_defines.h \
  /usr/include/c++/9/bits/cxxabi_init_exception.h \
@@ -169,13 +176,16 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/9/bits/stl_list.h \
  /usr/include/c++/9/bits/allocated_ptr.h /usr/include/c++/9/bits/list.tcc \
  ../include/swbuf.h ../include/defs.h /usr/include/string.h \
- /usr/include/strings.h ../include/swconfig.h ../include/multimapwdef.h \
- ../include/rawtext.h ../include/rawverse.h ../include/swtext.h \
- ../include/swmodule.h ../include/swdisp.h ../include/swobject.h \
- ../include/listkey.h ../include/swkey.h ../include/sysdata.h \
- ../include/config.h ../include/utilstr.h ../include/swcacher.h \
- ../include/swsearchable.h ../include/rawtext4.h ../include/rawverse4.h \
- ../include/rawstr4.h ../include/filemgr.h /usr/include/c++/9/vector \
+ /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+ ../include/swconfig.h ../include/multimapwdef.h ../include/rawtext.h \
+ ../include/rawverse.h ../include/swtext.h ../include/swmodule.h \
+ ../include/swdisp.h ../include/swobject.h ../include/listkey.h \
+ ../include/swkey.h ../include/sysdata.h ../include/config.h \
+ ../include/utilstr.h ../include/swcacher.h ../include/swsearchable.h \
+ ../include/rawtext4.h ../include/rawverse4.h ../include/rawstr4.h \
+ ../include/filemgr.h /usr/include/c++/9/vector \
  /usr/include/c++/9/bits/stl_construct.h \
  /usr/include/c++/9/bits/stl_uninitialized.h \
  /usr/include/c++/9/bits/stl_vector.h \
@@ -294,6 +304,10 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 
 /usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
 /usr/include/c++/9/stdlib.h:
 
 /usr/include/c++/9/cstdlib:
@@ -352,6 +366,8 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
@@ -364,7 +380,11 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 
 /usr/include/alloca.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 /usr/include/c++/9/bits/std_abs.h:
 
@@ -379,6 +399,8 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 /usr/include/linux/falloc.h:
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
 
 /usr/include/x86_64-linux-gnu/sys/stat.h:
 
@@ -437,6 +459,8 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
 
 /usr/include/c++/9/exception:
 
@@ -687,6 +711,10 @@ swmgr.lo: ../src/mgr/swmgr.cpp /usr/include/stdc-predef.h \
 /usr/include/string.h:
 
 /usr/include/strings.h:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 ../include/swconfig.h:
 

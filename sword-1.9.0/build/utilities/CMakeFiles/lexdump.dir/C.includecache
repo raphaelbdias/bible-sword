@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/workspaces/bible-sword/sword-1.9.0/utilities/lexdump.c
+ctype.h
+-
+stdio.h
+-
+fcntl.h
+-
+sys/stat.h
+-
+sys/types.h
+-
+errno.h
+-
+stdlib.h
+-
+string.h
+-
+io.h
+-
+unistd.h
+-
+

@@ -19,37 +19,37 @@ verseid = re.compile('^.+\..+\..+$')
 try:
 	import Sword
 except:
-	print "You do not have the SWORD library installed. Please install it."
+	print ("You do not have the SWORD library installed. Please install it.")
 	sys.exit(1)
 
 # Inform the user that we need pyquery, as it makes parsing XML files that much easier
 try:
 	from pyquery import PyQuery as pq
 except:
-	print "You do not appear to have PyQuery installed. Please install it."
+	print ("You do not appear to have PyQuery installed. Please install it.")
 	sys.exit(2)
 
 # Without the name of a file, we cannot proceed any further
 if len(sys.argv) < 2 or sys.argv[1] == '--help':
-	print "Usage: %s <OSISfile>" % (sys.argv[0],)
+	print ("Usage: %s <OSISfile>" % (sys.argv[0],))
 
 # Open the file
 if debug:
-	print 'Opening %s' % (sys.argv[1],)
+	print ('Opening %s' % (sys.argv[1],))
 d = pq(filename=sys.argv[1])
 # Get the list of versifications
 if debug:
-	print 'Fetching a list of versifications'
+	print ('Fetching a list of versifications')
 vmgr = Sword.VersificationMgr.getSystemVersificationMgr()
 av11ns = vmgr.getVersificationSystems()
 
 # Get the list of all osisIDs
 if debug:
-	print 'Fetching a list of OSIS IDs'
+	print ('Fetching a list of OSIS IDs')
 ids = d("*[osisID]")
 # Iterate each versification scheme
 for v11n in av11ns:
-	print 'Checking %s' % (v11n.c_str(),)
+	print ('Checking %s' % (v11n.c_str(),))
 	# Construct a list of the IDs in this versification
 	key = Sword.VerseKey()
 	key.setVersificationSystem(v11n.c_str())
@@ -92,21 +92,21 @@ for v11n in av11ns:
 	keyList.sort()
 	if len(keyList) > 0:
 		if verbose:
-			print '\tThe following IDs do not appear in your file:'
+			print ('\tThe following IDs do not appear in your file:')
 			for k in keyList:
-				print k
+				print (k)
 		else:
-			print '\tThere are %d OT IDs and %d NT IDs in the versification which are not in your file.' % (len(otkeyList), len(ntkeyList))
+			print ('\tThere are %d OT IDs and %d NT IDs in the versification which are not in your file.' % (len(otkeyList), len(ntkeyList)))
 	else:
-		print '\tYour file has all the references in this versification'
+		print ('\tYour file has all the references in this versification')
 		
 	# Now let's see if you had extra
 	if len(otextraKeys + ntextraKeys) > 0:
 		if verbose:
-			print '\tThe following IDs do not appear in the versification:'
+			print ('\tThe following IDs do not appear in the versification:')
 			for k in ntextraKeys + otextraKeys:
-				print k
+				print (k)
 		else:
-			print '\tThere are %d OT IDs and %d NT IDs in your file which do not appear in the versification.' % (len(otextraKeys), len(ntextraKeys))
+			print ('\tThere are %d OT IDs and %d NT IDs in your file which do not appear in the versification.' % (len(otextraKeys), len(ntextraKeys)))
 	else:
-		print '\tYour file has no extra references'
+		print ('\tYour file has no extra references')

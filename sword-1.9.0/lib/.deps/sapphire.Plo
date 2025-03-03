@@ -9,7 +9,10 @@ sapphire.lo: ../src/modules/common/sapphire.cpp \
  /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h ../include/sapphire.h ../include/defs.h
+ /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+ ../include/sapphire.h ../include/defs.h
 
 /usr/include/stdc-predef.h:
 
@@ -36,6 +39,10 @@ sapphire.lo: ../src/modules/common/sapphire.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/strings.h:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 ../include/sapphire.h:
 

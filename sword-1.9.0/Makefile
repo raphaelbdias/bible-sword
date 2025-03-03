@@ -277,8 +277,8 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = ${SHELL} /workspaces/bible-sword/sword-1.9.0/missing aclocal-1.16
 AMTAR = $${TAR-tar}
-AM_CFLAGS = -g3 -O0 -Wall -fPIC -DEXCLUDEBZIP2 -DEXCLUDEXZ -D_ICU_ -DCURLAVAILABLE -I/opt/conda/include -DCURLSFTPAVAILABLE -DUSEICUREGEX
-AM_CXXFLAGS = -g3 -O0 -Wall -Woverloaded-virtual -fPIC -DEXCLUDEBZIP2 -DEXCLUDEXZ -D_ICU_ -DCURLAVAILABLE -I/opt/conda/include -DCURLSFTPAVAILABLE -DUSECXX11TIME -std=c++11 -DUSEICUREGEX  -Wno-address -Wno-nonnull-compare
+AM_CFLAGS = -Ofast -fPIC -DEXCLUDEBZIP2 -DEXCLUDEXZ -D_ICU_ -DCURLAVAILABLE -I/opt/conda/include -DCURLSFTPAVAILABLE
+AM_CXXFLAGS = -Ofast -fPIC -DEXCLUDEBZIP2 -DEXCLUDEXZ -D_ICU_ -DCURLAVAILABLE -I/opt/conda/include -DCURLSFTPAVAILABLE  -Wno-address -Wno-nonnull-compare
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
 AS = as
@@ -294,7 +294,7 @@ CLUCENE2_LIBS =
 CLUCENE_CXXFLAGS = 
 CLUCENE_LIBS = 
 CPP = gcc -E
-CPPFLAGS = 
+CPPFLAGS = -I/usr/include
 CPPUNIT_CFLAGS = 
 CPPUNIT_CONFIG = no
 CPPUNIT_LIBS = 
@@ -326,7 +326,7 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS = 
+LDFLAGS = -L/lib/x86_64-linux-gnu
 LIBOBJS = 
 LIBS = -lz   -L/opt/conda/lib -licui18n -licuuc -licudata    -licuio  -L/opt/conda/lib -lcurl
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -389,10 +389,10 @@ build_vendor = pc
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
-dir_confdef = no
+dir_confdef = yes
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
-enable_debug = yes
+enable_debug = no
 enable_profile = no
 exec_prefix = ${prefix}
 host = x86_64-pc-linux-gnu
@@ -404,7 +404,7 @@ htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
 install_sh = ${SHELL} /workspaces/bible-sword/sword-1.9.0/install-sh
-libdir = /usr/lib64
+libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
@@ -412,13 +412,13 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr
+prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
-sysconfdir = /etc
+sysconfdir = ${prefix}/etc
 target = x86_64-pc-linux-gnu
 target_alias = 
 target_cpu = x86_64
@@ -430,7 +430,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 with_bzip2 = no
-with_conf = no
+with_conf = yes
 with_icu = yes
 with_icusword = no
 with_xz = no
@@ -440,7 +440,7 @@ ACLOCAL_AMFLAGS = -I m4
 LDADD = $(top_builddir)/lib/libsword.la
 
 # Global config directory
-globalconfdir := /etc
+globalconfdir := ${prefix}/etc
 SUBDIRS = lib . $(TESTSDIR) $(UTILSDIR) $(EXAMPLESDIR)
 #TESTSDIR = 
 TESTSDIR = tests
@@ -453,13 +453,13 @@ EXTRA_DIST = sword.spec sword.kdevprj sword.bmp usrinst.sh autogen.sh \
 	$(swdocdir)/translation-template.conf
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = sword.pc
-#sysconf_DATA = sword.conf
+sysconf_DATA = sword.conf
 buildtest_SOURCES = buildtest.cpp
 swlocaledir = $(top_srcdir)/locales.d
 localeDATA = $(swlocaledir)/*.conf
 localedatadir = $(pkgdatadir)/locales.d
 modsdatadir = $(pkgdatadir)/mods.d
-#modsDATA = samples/mods.d/globals.conf
+modsDATA = samples/mods.d/globals.conf
 swdocdir = $(top_srcdir)/doc
 all: all-recursive
 
@@ -954,7 +954,7 @@ install-strip:
 	fi
 mostlyclean-generic:
 
-clean-generic:
+#clean-generic:
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -1059,12 +1059,12 @@ ps-am:
 
 
 $(pkgconfig_DATA): config.status
-#sword.conf:
-#	@echo "[Install]" > sword.conf
-#	@echo "DataPath=$(pkgdatadir)/" >> sword.conf
+sword.conf:
+	@echo "[Install]" > sword.conf
+	@echo "DataPath=$(pkgdatadir)/" >> sword.conf
 
-#clean-generic:
-#	-rm -f sword.conf
+clean-generic:
+	-rm -f sword.conf
 
 installlocaleDATA: $(localeDATA)
 	@$(NORMAL_INSTALL)
@@ -1084,29 +1084,29 @@ uninstalllocaleDATA:
 	  rm -f $(DESTDIR)$(localedatadir)/$$f; \
 	done
 
-#installmodsDATA: $(modsDATA)
-#	@$(NORMAL_INSTALL)
-#	$(mkinstalldirs) $(DESTDIR)$(modsdatadir)
-#	@list='$(modsDATA)'; for p in $$list; do \
-#	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-#	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-#	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(modsdatadir)/$$f"; \
-#	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(modsdatadir)/$$f; \
-#	done
-
-#uninstallmodsDATA:
-#	@$(NORMAL_UNINSTALL)
-#	@list='$(modsDATA)'; for p in $$list; do \
-#	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-#	  echo " rm -f $(DESTDIR)$(modsdatadir)/$$f"; \
-#	  rm -f $(DESTDIR)$(modsdatadir)/$$f; \
-#	done
-installmodsDATA: 
+installmodsDATA: $(modsDATA)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(modsdatadir) \
+	$(mkinstalldirs) $(DESTDIR)$(modsdatadir)
+	@list='$(modsDATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(modsdatadir)/$$f"; \
+	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(modsdatadir)/$$f; \
 	done
 
 uninstallmodsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(modsDATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(modsdatadir)/$$f"; \
+	  rm -f $(DESTDIR)$(modsdatadir)/$$f; \
+	done
+#installmodsDATA: 
+#	@$(NORMAL_INSTALL)
+#	$(mkinstalldirs) $(DESTDIR)$(modsdatadir) \
+#	done
+
+#uninstallmodsDATA:
 
 restore:
 	cd $(top_srcdir) && ./scripts/restoremake.sh

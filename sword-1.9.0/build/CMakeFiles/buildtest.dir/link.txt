@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3   -rdynamic CMakeFiles/buildtest.dir/buildtest.cpp.o  -o buildtest  libsword.a -lz -lbz2 -llzma -lcurl -licudata -licui18n -licuio -licuuc 
