@@ -10,7 +10,8 @@ The project has the following structure:
 
 build/ install_module.sh README.md sword-1.9.0 .deps/ .libs/ aclocal.m4 arminst.sh AUTHORS autogen.sh bindings/ build/ buildtest.cpp buildtest.o ChangeLog cmake/ CMakeLists.txt CODINGSTYLE compile config.guess config.h.in config.log config.status config.sub configure configure.ac COPYING depcomp distignore doc/ done/ examples/ icu/ icu4c-73_1-src.tgz include/ INSTALL install-sh lib/ libtool LICENSE locales.d/ ltmain.sh m4/ Makefile ... sword-1.9.0.tar.gz
 
-
+## TO INSTALL A MODULE
+./install_module.sh sword-1.9.0/modules/<module.zip> 
 
 ## Building the Project
 To build the project, follow these steps:

@@ -9,7 +9,7 @@ os.environ["LD_LIBRARY_PATH"] = "/usr/local/lib:" + os.environ.get("LD_LIBRARY_P
 app = Flask(__name__)
 
 # Define available modules and a static list of Bible books.
-AVAILABLE_MODULES = ["KJV", "KJVA", "Aleppo", "NETtext", "WLC", "YLT"]
+AVAILABLE_MODULES = ["AKJV", "KJV", "KJVA", "Aleppo", "NETtext", "WLC", "YLT", "OSHB"]
 
 BIBLE_BOOKS = [
     "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
@@ -30,13 +30,26 @@ BIBLE_BOOKS = [
 
 def get_passage(passage, module):
     """
-    Retrieve a passage from the specified Bible module using Diatheke,
-    requesting OSIS output to preserve all markup.
+    Retrieve a passage from the specified Bible module using Diatheke.
+    For Hebrew Bible modules (Aleppo, WLC, OSHB), we include the specific option
+    filters (nfmhcvaplsrbwgeiM) and output format flag (-f OSIS).
+    For other modules, we use a simpler command.
     """
     try:
-        cmd = ["/usr/local/bin/diatheke", "-b", module, "-o", "OSIS", "-k", passage]
+        if module in ["Aleppo", "WLC", "OSHB"]:
+            # Hebrew Bible modules: use the full set of optional filters.
+            cmd = [
+                "/usr/local/bin/diatheke", "-b", module,
+                "-o", "nfmhcvaplsrwgeixM",
+                "-f", "OSIS",
+                "-k", passage
+            ]
+        else:
+            # Default command for other modules.
+            cmd = ["/usr/local/bin/diatheke", "-b", module, "-o","OSIS", "-k", passage]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(result.stdout)  # For debugging purposes
+        print(result.stdout)  # Debug output
+        print(result.stderr)  # Debug output
         return result.stdout
     except subprocess.CalledProcessError as e:
         return f"<p>Error retrieving passage: {e.stderr}</p>"
@@ -52,7 +65,7 @@ def search_in_text(text, keyword):
 @app.route("/", methods=["GET", "POST"])
 def index():
     passage = ""
-    module = "KJV"
+    module = "AKJV"
     keyword = ""
     passage_text = ""
     selected_book = "Genesis"  # default book
@@ -60,7 +73,7 @@ def index():
 
     if request.method == "POST":
         passage = request.form.get("passage", "")
-        module = request.form.get("module", "KJV")
+        module = request.form.get("module", "AKJV")
         keyword = request.form.get("keyword", "")
         selected_book = request.form.get("book", "Genesis")
         # Construct the full passage reference by combining the book with the user-entered chapter and verse.

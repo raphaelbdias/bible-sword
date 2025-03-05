@@ -14,10 +14,10 @@ library_names='libsword-1.9.0.so libsword-1.9.0.so libsword.so'
 old_library='libsword.a'
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags=' -pthread'
+inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -lz -L/opt/conda/lib -licui18n -licuuc -licudata -licuio /usr/lib/x86_64-linux-gnu/libcurl.la'
+dependency_libs=' -lz -L/opt/conda/lib -licui18n -licuuc -licudata -licuio -lcurl'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
