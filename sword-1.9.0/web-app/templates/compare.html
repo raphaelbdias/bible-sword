@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Bible Passage Viewer</title>
+  <title>Bible Passage Viewer - Compare Versions</title>
 
   <!-- Google Fonts for Charis SIL -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,15 +19,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-
-  <!-- Optional navigation / top bar -->
   <header class="top-bar">
-    <h1>Bible Passage Viewer</h1>
+    <h1>Bible Passage Viewer - Compare Versions</h1>
   </header>
 
-  <!-- Main content container -->
   <main class="main-content">
-    <!-- Form for selecting a passage -->
     <form method="post" class="passage-form">
       <label>Book:
         <select name="book">
@@ -40,13 +36,23 @@
       </label>
 
       <label>Passage (Chapter:Verse):
-        <input type="text" name="passage" value="{{ passage_input }}" placeholder="e.g., 1:1-5">
+        <input type="text" name="passage" value="{{ passage_input }}" placeholder="e.g. 1:1-5">
       </label>
 
-      <label>Module:
-        <select name="module">
+      <label>Module Version 1:
+        <select name="module1">
           {% for mod in available_modules %}
-            <option value="{{ mod }}" {% if mod == module %}selected{% endif %}>
+            <option value="{{ mod }}" {% if mod == module1 %}selected{% endif %}>
+              {{ mod }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <label>Module Version 2:
+        <select name="module2">
+          {% for mod in available_modules %}
+            <option value="{{ mod }}" {% if mod == module2 %}selected{% endif %}>
               {{ mod }}
             </option>
           {% endfor %}
@@ -56,34 +62,41 @@
       <button type="submit">Get Passage</button>
     </form>
 
-    <!-- Book Title / Heading -->
-    {% if passage_text %}
-      <div class="book-heading">
-        <h2>{{ selected_book }} {{ passage_input }}</h2>
+    <!-- Only show comparison windows if both passages are available -->
+    {% if passage_text1 and passage_text2 %}
+      <div class="compare-container">
+        <!-- First Bible Window -->
+        <div class="bible-window">
+          <div class="book-heading">
+            <h2>{{ selected_book }} {{ passage_input }} - {{ module1 }}</h2>
+          </div>
+          <div class="bible-text" id="bible-text-1">
+            {{ passage_text1 | safe }}
+          </div>
+        </div>
+
+        <!-- Second Bible Window -->
+        <div class="bible-window">
+          <div class="book-heading">
+            <h2>{{ selected_book }} {{ passage_input }} - {{ module2 }}</h2>
+          </div>
+          <div class="bible-text" id="bible-text-2">
+            {{ passage_text2 | safe }}
+          </div>
+        </div>
       </div>
     {% endif %}
-
-    <!-- Container for the passage text -->
-    <div class="bible-text" id="bible-text">
-      {{ passage_text | safe }}
-    </div>
   </main>
 
-  <!-- Popper.js and Tippy.js from CDNs -->
+  <!-- Popper.js and Tippy.js -->
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
 
-  <!-- Optional: Dictionary data for tooltips -->
+  <!-- Dictionary JS (optional) -->
   <script src="{{ url_for('static', filename='js/strongs-greek-dictionary.js') }}"></script>
   <script src="{{ url_for('static', filename='js/strongs-hebrew-dictionary.js') }}"></script>
 
   <!-- Tooltip logic -->
-  <!-- Ensure tooltip.js contains the code that:
-       1) Converts <w> tags to <span class="word">,
-       2) Looks up definitions,
-       3) Initializes Tippy with data-tippy-content.
-  -->
   <script src="{{ url_for('static', filename='tooltip.js') }}"></script>
-
 </body>
 </html>

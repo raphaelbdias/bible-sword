@@ -2,13 +2,11 @@
 from flask import Flask, request, render_template
 import subprocess
 import os
-
-# Ensure LD_LIBRARY_PATH includes /usr/local/lib
-os.environ["LD_LIBRARY_PATH"] = "/usr/local/lib:" + os.environ.get("LD_LIBRARY_PATH", "")
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-# Define available modules and a static list of Bible books.
+# List of available modules and Bible books
 AVAILABLE_MODULES = ["AKJV", "KJV", "KJVA", "Aleppo", "NETtext", "WLC", "YLT", "OSHB"]
 
 BIBLE_BOOKS = [
@@ -31,68 +29,104 @@ BIBLE_BOOKS = [
 def get_passage(passage, module):
     """
     Retrieve a passage from the specified Bible module using Diatheke.
-    For Hebrew Bible modules (Aleppo, WLC, OSHB), we include the specific option
-    filters (nfmhcvaplsrbwgeiM) and output format flag (-f OSIS).
-    For other modules, we use a simpler command.
+    For Hebrew Bible modules, include additional options.
     """
     try:
         if module in ["Aleppo", "WLC", "OSHB"]:
-            # Hebrew Bible modules: use the full set of optional filters.
             cmd = [
                 "/usr/local/bin/diatheke", "-b", module,
-                "-o", "nfmhcvaplsrwgeixM",
+                "-o", "nfmhcvawlsngeixM",  # Additional options for Hebrew modules
                 "-f", "OSIS",
                 "-k", passage
             ]
         else:
-            # Default command for other modules.
-            cmd = ["/usr/local/bin/diatheke", "-b", module, "-o","OSIS", "-k", passage]
+            # For non-Hebrew modules, we still include the same flags to see more data:
+            cmd = [
+                "/usr/local/bin/diatheke", "-b", module,
+                "-o", "nfmhcvawlsngeixM",
+                "-k", passage
+            ]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(result.stdout)  # Debug output
-        print(result.stderr)  # Debug output
+        print(result.stdout)  # For debugging
         return result.stdout
     except subprocess.CalledProcessError as e:
-        return f"<p>Error retrieving passage: {e.stderr}</p>"
+        return f"Error retrieving passage: {e.stderr}"
 
-def search_in_text(text, keyword):
+def clean_osis_output(raw_html):
     """
-    Searches for lines containing the keyword (case-insensitive).
-    Returns a list of matching lines.
+    Clean up the OSIS/HTML output using BeautifulSoup to ensure well-formed markup.
     """
-    lines = text.splitlines()
-    return [line for line in lines if keyword.lower() in line.lower()]
+    soup = BeautifulSoup(raw_html, "html.parser")
+    # If certain tags cause issues, remove them or transform them here.
+    # for tag in soup.find_all("milestone"):
+    #     tag.decompose()
+    return str(soup)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    passage = ""
-    module = "AKJV"
-    keyword = ""
+    """
+    Single-version route.
+    """
     passage_text = ""
-    selected_book = "Genesis"  # default book
-    search_results = []
+    selected_book = "Genesis"
+    passage_input = ""
+    module = "AKJV"
 
     if request.method == "POST":
-        passage = request.form.get("passage", "")
-        module = request.form.get("module", "AKJV")
-        keyword = request.form.get("keyword", "")
+        passage_input = request.form.get("passage", "")
         selected_book = request.form.get("book", "Genesis")
-        # Construct the full passage reference by combining the book with the user-entered chapter and verse.
-        full_passage = f"{selected_book} {passage}"
-        passage_text = get_passage(full_passage, module)
-        if keyword:
-            search_results = search_in_text(passage_text, keyword)
+        module = request.form.get("module", "AKJV")
+        full_passage = f"{selected_book} {passage_input}"
+        raw_output = get_passage(full_passage, module)
+        passage_text = clean_osis_output(raw_output)
 
     return render_template(
-        "index.html",
-        passage=passage,
-        module=module,
-        keyword=keyword,
+        "index.html",  # Your existing single-view template
         passage_text=passage_text,
-        search_results=search_results,
+        selected_book=selected_book,
+        passage_input=passage_input,
+        module=module,
         available_modules=AVAILABLE_MODULES,
-        bible_books=BIBLE_BOOKS,
-        selected_book=selected_book
+        bible_books=BIBLE_BOOKS
+    )
+
+@app.route("/compare", methods=["GET", "POST"])
+def compare():
+    """
+    Two-version route for side-by-side comparison.
+    """
+    passage_text1 = ""
+    passage_text2 = ""
+    selected_book = "Genesis"
+    passage_input = ""
+    module1 = "AKJV"
+    module2 = "AKJV"
+
+    if request.method == "POST":
+        passage_input = request.form.get("passage", "")
+        selected_book = request.form.get("book", "Genesis")
+        module1 = request.form.get("module1", "AKJV")
+        module2 = request.form.get("module2", "AKJV")
+
+        full_passage = f"{selected_book} {passage_input}"
+        raw_output1 = get_passage(full_passage, module1)
+        raw_output2 = get_passage(full_passage, module2)
+
+        passage_text1 = clean_osis_output(raw_output1)
+        passage_text2 = clean_osis_output(raw_output2)
+
+    return render_template(
+        "compare.html",  # A new template for side-by-side comparison
+        passage_text1=passage_text1,
+        passage_text2=passage_text2,
+        selected_book=selected_book,
+        passage_input=passage_input,
+        module1=module1,
+        module2=module2,
+        available_modules=AVAILABLE_MODULES,
+        bible_books=BIBLE_BOOKS
     )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    os.environ["LD_LIBRARY_PATH"] = "/usr/local/lib:" + os.environ.get("LD_LIBRARY_PATH", "")
+    app.run(debug=True)
