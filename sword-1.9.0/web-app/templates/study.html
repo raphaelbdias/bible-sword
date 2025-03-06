@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bible Study</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- Google Fonts and Tippy.js CSS as before -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Bible Study</h1>
+  </header>
+  <main class="main-content">
+    <form method="post" class="passage-form">
+      <label>Multiword Search example: "think heart"
+        <input type="text" name="passage" value="{{ passage_input }}" placeholder="e.g., Son of Man">
+      </label>
+      <label>Module:
+        <select name="module">
+          {% for mod in available_modules %}
+            <option value="{{ mod }}" {% if mod == module %}selected{% endif %}>{{ mod }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Search Type:
+        <select name="search_type">
+          <option value="multiword" {% if search_type == "multiword" %}selected{% endif %}>Multiword</option>
+          <option value="phrase" {% if search_type == "phrase" %}selected{% endif %}>Phrase</option>
+          <option value="regex" {% if search_type == "regex" %}selected{% endif %}>Regex</option>
+        </select>
+      </label>
+      <button type="submit">Study Passage</button>
+    </form>
+
+  <div class="bible-text" id="bible-text">
+    <ul>
+    {% if study_output %}
+      {% for verse_content in study_output %}
+      <p>
+        <span>{{ verse_content | safe }}</span>
+      </p>
+      {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </main>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="{{ url_for('static', filename='js/strongs-greek-dictionary.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/strongs-hebrew-dictionary.js') }}"></script>
+  <script src="{{ url_for('static', filename='tooltip.js') }}"></script>
+</body>
+</html>

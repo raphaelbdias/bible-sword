@@ -54,6 +54,19 @@ def get_passage(passage, module):
     except subprocess.CalledProcessError as e:
         return f"Error retrieving passage: {e.stderr}"
 
+def multiword_search(passage, module):
+    cmd = [
+                "/usr/local/bin/diatheke", 
+                "-b", module,
+                "-s", "multiword",
+                "-k", passage
+            ]
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    result_set = result.stdout.split(";")
+
+        # print(result.stdout)  # For debugging
+    return result_set
+
 def parse_range(passage_input):
     """
     Parse a free-text passage input into a dictionary with keys:
@@ -165,5 +178,37 @@ def index():
         bible_books=BIBLE_BOOKS
     )
 
+
+# New "study" route for more detailed Bible study features.
+@app.route("/study", methods=["GET", "POST"])
+def study():
+    study_output = ""
+    selected_book = "Genesis"
+    passage_input = ""
+    module = "KJV"
+    search_type = "multiword"  # Default search mode
+
+    if request.method == "POST":
+        selected_book = request.form.get("book", "Genesis")
+        passage_input = request.form.get("passage", "")
+        print("DEBUG: Passage input:", passage_input)
+        module = request.form.get("module", "KJV")
+        search_type = request.form.get("search_type", "multiword")
+        study_output = []
+        study_outputs = multiword_search(passage_input, module)
+        for verse in (study_outputs):
+            study_output.append(get_passage(verse, module))
+        
+
+    return render_template(
+        "study.html",
+        study_output=study_output,
+        selected_book=selected_book,
+        passage_input=passage_input,
+        module=module,
+        search_type=search_type,
+        available_modules=AVAILABLE_MODULES,
+        bible_books=BIBLE_BOOKS
+    )
 if __name__ == "__main__":
     app.run(debug=True)
