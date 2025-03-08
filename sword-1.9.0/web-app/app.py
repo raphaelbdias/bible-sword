@@ -10,7 +10,7 @@ app = Flask(__name__)
 os.environ["LD_LIBRARY_PATH"] = "/usr/local/lib:" + os.environ.get("LD_LIBRARY_PATH", "")
 
 # List of available modules and Bible books
-AVAILABLE_MODULES = ["AKJV", "KJV", "KJVA", "Aleppo", "NETtext", "WLC", "YLT", "OSHB"]
+AVAILABLE_MODULES = ["AKJV", "Aleppo","KJV", "KJVA", "NETtext", "OSHB", "SPDSS","WLC", "YLT"]
 
 BIBLE_BOOKS = [
     "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
@@ -34,18 +34,10 @@ def get_passage(passage, module):
     Retrieve a passage from the specified Bible module using Diatheke.
     """
     try:
-        if module in ["Aleppo", "WLC", "OSHB"]:
-            cmd = [
+        cmd = [
                 "/usr/local/bin/diatheke", "-b", module,
-                "-o", "nfmhcvawlsngeixM",  # Options for Hebrew modules
-                "-f", "OSIS",
-                "-k", passage
-            ]
-        else:
-            cmd = [
-                "/usr/local/bin/diatheke", "-b", module,
-                "-f", "OSIS",
                 "-o", "nfmhcvawlsngeixM",
+                "-f", "HTML",
                 "-k", passage
             ]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -210,5 +202,28 @@ def study():
         available_modules=AVAILABLE_MODULES,
         bible_books=BIBLE_BOOKS
     )
+
+
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    selected_book = "Genesis"
+    passage_input = ""
+    module = "AKJV"
+    
+    passage_input = "5"
+    selected_book = "Matthew"
+    module = "KJV"
+    full_passage = f"{selected_book} {passage_input}"
+    osis_text = get_passage(full_passage, module)
+
+    return render_template(
+        "test.html",
+        content=osis_text,
+        selected_book=selected_book,
+        passage_input=passage_input,
+        module=module,
+        available_modules=AVAILABLE_MODULES,
+        bible_books=BIBLE_BOOKS
+)
 if __name__ == "__main__":
     app.run(debug=True)

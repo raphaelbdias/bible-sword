@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bible Passage Viewer</title>
+  <!-- Google Fonts for Charis SIL -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  >
+  <!-- Tippy.js CSS (tooltips) -->
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <!-- Your own CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Bible Passage Viewer</h1>
+  </header>
+{% block content %}
+    {{ content | safe}}
+{% endblock %}
+  <!-- Popper.js and Tippy.js from CDNs -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <!-- Optional: Dictionary data for tooltips -->
+  <script src="{{ url_for('static', filename='js/strongs-greek-dictionary.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/strongs-hebrew-dictionary.js') }}"></script>
+  <!-- Tooltip logic -->
+  <script src="{{ url_for('static', filename='tooltip.js') }}"></script>
+</html>
