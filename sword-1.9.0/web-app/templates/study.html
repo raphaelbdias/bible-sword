@@ -36,6 +36,14 @@
       <button type="submit">Study Passage</button>
     </form>
 
+    {% if study_output %}
+  <h2>Export Study Results:</h2>
+  <a href="{{ url_for('export', format='txt') }}" class="btn">Export as TXT</a>
+  <a href="{{ url_for('export', format='csv') }}" class="btn">Export as CSV</a>
+  <a href="{{ url_for('export', format='pdf') }}" class="btn">Export as PDF</a>
+{% endif %}
+
+
   <div class="bible-text" id="bible-text">
     <ul>
     {% if study_output %}

@@ -2,8 +2,15 @@
 import re
 import subprocess
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_file, session
+import csv
+import io
+from fpdf import FPDF
 from bs4 import BeautifulSoup
+import os
+import json
+import uuid
+
 
 app = Flask(__name__)
 
@@ -29,6 +36,7 @@ BIBLE_BOOKS = [
     "Jude", "Revelation"
 ]
 
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "fallback_secret_key")
 def get_passage(passage, module):
     """
     Retrieve a passage from the specified Bible module using Diatheke.
@@ -94,6 +102,68 @@ def parse_range(passage_input):
         "end_chapter": end_ch,
         "end_verse": end_v
     }
+
+
+def export_txt(formatted_html):
+    """Export formatted HTML as readable TXT."""
+    soup = BeautifulSoup(formatted_html, "html.parser")
+
+    # Extract clean text from the already formatted HTML
+    readable_text = soup.get_text(separator="\n")
+
+    output = io.StringIO()
+    output.write(readable_text)
+    output.seek(0)
+
+    return send_file(
+        io.BytesIO(output.getvalue().encode()), 
+        mimetype="text/plain", 
+        as_attachment=True, 
+        download_name="study_results.txt"
+    )
+
+
+def export_csv(formatted_html):
+    """Export formatted study data as CSV."""
+    soup = BeautifulSoup(formatted_html, "html.parser")
+
+    # Extract each verse from study.html
+    verses = soup.find_all("p")  # Assuming verses are wrapped in `<p>` tags
+
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["Verse", "Content"])
+
+    for verse in verses:
+        verse_text = verse.get_text(strip=True)
+        verse_parts = verse_text.split(":", 1)
+        verse_ref = verse_parts[0] if len(verse_parts) > 1 else "Unknown"
+        verse_content = verse_parts[1] if len(verse_parts) > 1 else verse_text
+        writer.writerow([verse_ref, verse_content])
+
+    output.seek(0)
+    return send_file(
+        io.BytesIO(output.getvalue().encode()), 
+        mimetype="text/csv", 
+        as_attachment=True, 
+        download_name="study_results.csv"
+    )
+
+
+def export_pdf(study_results):
+    """Export study results as a PDF file."""
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+
+    for verse in study_results:
+        pdf.multi_cell(0, 10, verse)
+
+    pdf_output = io.BytesIO()
+    pdf.output(pdf_output)
+    pdf_output.seek(0)
+    return send_file(pdf_output, mimetype="application/pdf", as_attachment=True, download_name="study_results.pdf")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -170,27 +240,42 @@ def index():
         bible_books=BIBLE_BOOKS
     )
 
-
-# New "study" route for more detailed Bible study features.
 @app.route("/study", methods=["GET", "POST"])
 def study():
-    study_output = ""
-    selected_book = "Genesis"
-    passage_input = ""
-    module = "KJV"
-    search_type = "multiword"  # Default search mode
+    study_output = []
+    selected_book = request.form.get("book", "Genesis")
+    passage_input = request.form.get("passage", "").strip()
+    module = request.form.get("module", "KJV")
+    search_type = request.form.get("search_type", "multiword")
 
     if request.method == "POST":
-        selected_book = request.form.get("book", "Genesis")
-        passage_input = request.form.get("passage", "")
-        print("DEBUG: Passage input:", passage_input)
-        module = request.form.get("module", "KJV")
-        search_type = request.form.get("search_type", "multiword")
-        study_output = []
-        study_outputs = multiword_search(passage_input, module)
-        for verse in (study_outputs):
-            study_output.append(get_passage(verse, module))
+        if not passage_input:
+            return "Error: Passage input cannot be empty.", 400
         
+        study_outputs = multiword_search(passage_input, module)
+        study_output = [get_passage(verse, module) for verse in study_outputs]
+
+        # Ensure the "temp" directory exists
+        os.makedirs("temp", exist_ok=True)  
+
+        # Generate a unique ID for export
+        export_id = str(uuid.uuid4())
+
+        # Store formatted HTML in a file
+        with open(f"temp/{export_id}.html", "w") as f:
+            html_output = render_template(
+                "study.html",
+                study_output=study_output,
+                selected_book=selected_book,
+                passage_input=passage_input,
+                module=module,
+                search_type=search_type,
+                available_modules=AVAILABLE_MODULES,
+                bible_books=BIBLE_BOOKS
+            )
+            f.write(html_output)
+
+        session["export_id"] = export_id  
 
     return render_template(
         "study.html",
@@ -203,6 +288,33 @@ def study():
         bible_books=BIBLE_BOOKS
     )
 
+
+@app.route("/export", methods=["GET"])
+def export():
+    format_type = request.args.get("format", "txt")
+    export_id = session.get("export_id")  
+
+    if not export_id:
+        return "No export data found.", 400
+
+    file_path = f"temp/{export_id}.html"
+
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        return "Export data expired or missing. Try running the study again.", 400
+
+    # Read the stored HTML file
+    with open(file_path, "r") as f:
+        formatted_html = f.read()
+
+    if format_type == "txt":
+        return export_txt(formatted_html)
+    elif format_type == "csv":
+        return export_csv(formatted_html)
+    elif format_type == "pdf":
+        return export_pdf(formatted_html)
+    else:
+        return "Unsupported export format.", 400
 
 @app.route("/test", methods=["GET", "POST"])
 def test():

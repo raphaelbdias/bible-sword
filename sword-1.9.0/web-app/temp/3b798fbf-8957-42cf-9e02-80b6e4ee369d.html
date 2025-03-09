@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bible Study</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <!-- Google Fonts and Tippy.js CSS as before -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Bible Study</h1>
+  </header>
+  <main class="main-content">
+    <form method="post" class="passage-form">
+      <label>Multiword Search example: "think heart"
+        <input type="text" name="passage" value="think heart" placeholder="e.g., Son of Man">
+      </label>
+      <label>Module:
+        <select name="module">
+          
+            <option value="AKJV" >AKJV</option>
+          
+            <option value="Aleppo" >Aleppo</option>
+          
+            <option value="KJV" selected>KJV</option>
+          
+            <option value="KJVA" >KJVA</option>
+          
+            <option value="NETtext" >NETtext</option>
+          
+            <option value="OSHB" >OSHB</option>
+          
+            <option value="SPDSS" >SPDSS</option>
+          
+            <option value="WLC" >WLC</option>
+          
+            <option value="YLT" >YLT</option>
+          
+        </select>
+      </label>
+      <label>Search Type:
+        <select name="search_type">
+          <option value="multiword" selected>Multiword</option>
+          <option value="phrase" >Phrase</option>
+          <option value="regex" >Regex</option>
+        </select>
+      </label>
+      <button type="submit">Study Passage</button>
+    </form>
+
+    
+  <h2>Export Study Results:</h2>
+  <a href="/export?format=txt" class="btn">Export as TXT</a>
+  <a href="/export?format=csv" class="btn">Export as CSV</a>
+  <a href="/export?format=pdf" class="btn">Export as PDF</a>
+
+
+
+  <div class="bible-text" id="bible-text">
+    <ul>
+    
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>II Chronicles 6:37: <span style="font:Gentium;" >Yet <transChange type="added">if</transChange> <w lemma="strong:H03824 strong:H07725" morph="strongMorph:TH8689" savlm="strong:H03824 strong:H07725">they bethink</w> <w lemma="strong:H0776" savlm="strong:H0776">themselves in the land</w> <w lemma="strong:H07617" morph="strongMorph:TH8738" savlm="strong:H07617">whither they are carried captive</w>, <w lemma="strong:H07725" morph="strongMorph:TH8804" savlm="strong:H07725">and turn</w> <w lemma="strong:H02603" morph="strongMorph:TH8694" savlm="strong:H02603">and pray</w> <w lemma="strong:H0776" savlm="strong:H0776">unto thee in the land</w> <w lemma="strong:H07628" savlm="strong:H07628">of their captivity</w>, <w lemma="strong:H0559" morph="strongMorph:TH8800" savlm="strong:H0559">saying</w>, <w lemma="strong:H02398" morph="strongMorph:TH8804" savlm="strong:H02398">We have sinned</w>, <w lemma="strong:H05753" morph="strongMorph:TH8689" savlm="strong:H05753">we have done amiss</w>, <w lemma="strong:H07561" morph="strongMorph:TH8804" savlm="strong:H07561">and have dealt wickedly</w>;<note swordFootnote="1" type="study"></note></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>II Chronicles 13:7: <span style="font:Gentium;" ><w lemma="strong:H06908" morph="strongMorph:TH8735" savlm="strong:H06908">And there are gathered</w> <w lemma="strong:H07386" savlm="strong:H07386">unto him vain</w> <w lemma="strong:H0582" savlm="strong:H0582">men</w>, <w lemma="strong:H01121" savlm="strong:H01121">the children</w> <w lemma="strong:H01100" savlm="strong:H01100">of Belial</w>, <w lemma="strong:H0553" morph="strongMorph:TH8691" savlm="strong:H0553">and have strengthened</w> <w lemma="strong:H07346" savlm="strong:H07346">themselves against Rehoboam</w> <w lemma="strong:H01121" savlm="strong:H01121">the son</w> <w lemma="strong:H08010" savlm="strong:H08010">of Solomon</w>, <w lemma="strong:H07346" savlm="strong:H07346">when Rehoboam</w> <w lemma="strong:H05288" savlm="strong:H05288">was young</w> <w lemma="strong:H03824 strong:H07390" savlm="strong:H03824 strong:H07390">and tenderhearted</w>, <w lemma="strong:H02388" morph="strongMorph:TH8694" savlm="strong:H02388">and could not withstand</w> <w lemma="strong:H06440" savlm="strong:H06440">them</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>II Chronicles 13:8: <span style="font:Gentium;" ><w lemma="strong:H0559" morph="strongMorph:TH8802" savlm="strong:H0559">And now ye think</w> <w lemma="strong:H02388" morph="strongMorph:TH8692" savlm="strong:H02388">to withstand</w> <w lemma="strong:H04467 strong:H06440" savlm="strong:H04467 strong:H06440">the kingdom</w> <w lemma="strong:H03068" savlm="strong:H03068">of the <divineName>Lord</divineName></w> <w lemma="strong:H03027" savlm="strong:H03027">in the hand</w> <w lemma="strong:H01121" savlm="strong:H01121">of the sons</w> <w lemma="strong:H01732" savlm="strong:H01732">of David</w>; and ye <transChange type="added">be</transChange> <w lemma="strong:H07227" savlm="strong:H07227">a great</w> <w lemma="strong:H01995" savlm="strong:H01995">multitude</w>, and <transChange type="added">there are</transChange> <w lemma="strong:H02091" savlm="strong:H02091">with you golden</w> <w lemma="strong:H05695" savlm="strong:H05695">calves</w>, <w lemma="strong:H03379" savlm="strong:H03379">which Jeroboam</w> <w lemma="strong:H06213" morph="strongMorph:TH8804" savlm="strong:H06213">made</w> <w lemma="strong:H0430" savlm="strong:H0430">you for gods</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Proverbs 23:7: <span style="font:Gentium;" ><w lemma="strong:H08176" morph="strongMorph:TH8804" savlm="strong:H08176">For as he thinketh</w> <w lemma="strong:H05315" savlm="strong:H05315">in his heart</w>, so <transChange type="added">is</transChange> <w lemma="strong:H0398" morph="strongMorph:TH8798" savlm="strong:H0398">he: Eat</w> <w lemma="strong:H08354" morph="strongMorph:TH8798" savlm="strong:H08354">and drink</w>, <w lemma="strong:H0559" morph="strongMorph:TH8799" savlm="strong:H0559">saith</w> <w lemma="strong:H03820" savlm="strong:H03820">he to thee; but his heart</w> <transChange type="added">is</transChange> not with thee.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Ecclesiastes 8:16: <span style="font:Gentium;" ><milestone marker="¶" subType="x-added" type="x-p"/><w lemma="strong:H05414" morph="strongMorph:TH8804" savlm="strong:H05414">When I applied</w> <w lemma="strong:H03820" savlm="strong:H03820">mine heart</w> <w lemma="strong:H03045" morph="strongMorph:TH8800" savlm="strong:H03045">to know</w> <w lemma="strong:H02451" savlm="strong:H02451">wisdom</w>, <w lemma="strong:H07200" morph="strongMorph:TH8800" savlm="strong:H07200">and to see</w> <w lemma="strong:H06045" savlm="strong:H06045">the business</w> <w lemma="strong:H06213" morph="strongMorph:TH8738" savlm="strong:H06213">that is done</w> <w lemma="strong:H0776" savlm="strong:H0776">upon the earth</w>: (for also <transChange type="added">there is that</transChange> <w lemma="strong:H03117" savlm="strong:H03117">neither day</w> <w lemma="strong:H03915" savlm="strong:H03915">nor night</w> <w lemma="strong:H07200" morph="strongMorph:TH8802" savlm="strong:H07200">seeth</w> <w lemma="strong:H08142" savlm="strong:H08142">sleep</w> <w lemma="strong:H05869" savlm="strong:H05869">with his eyes</w>:)</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Ecclesiastes 8:17: <span style="font:Gentium;" ><w lemma="strong:H07200" morph="strongMorph:TH8804" savlm="strong:H07200">Then I beheld</w> <w lemma="strong:H04639" savlm="strong:H04639">all the work</w> <w lemma="strong:H0430" savlm="strong:H0430">of God</w>, <w lemma="strong:H0120" savlm="strong:H0120">that a man</w> <w lemma="strong:H03201" morph="strongMorph:TH8799" savlm="strong:H03201">cannot</w> <w lemma="strong:H04672" morph="strongMorph:TH8800" savlm="strong:H04672">find out</w> <w lemma="strong:H04639" savlm="strong:H04639">the work</w> <w lemma="strong:H06213" morph="strongMorph:TH8738" savlm="strong:H06213">that is done</w> <w lemma="strong:H08121" savlm="strong:H08121">under the sun</w>: <w lemma="strong:H0834" savlm="strong:H0834">because</w> <w lemma="strong:H07945" savlm="strong:H07945">though</w> <w lemma="strong:H0120" savlm="strong:H0120">a man</w> <w lemma="strong:H05998" morph="strongMorph:TH8799" savlm="strong:H05998">labour</w> to seek <transChange type="added">it</transChange> <w lemma="strong:H01245" morph="strongMorph:TH8763" savlm="strong:H01245">out</w>, <w lemma="strong:H04672" morph="strongMorph:TH8799" savlm="strong:H04672">yet he shall not find</w> <transChange type="added">it</transChange>; <w lemma="strong:H02450" savlm="strong:H02450">yea further; though a wise</w> <transChange type="added">man</transChange> <w lemma="strong:H0559" morph="strongMorph:TH8799" savlm="strong:H0559">think</w> <w lemma="strong:H03045" morph="strongMorph:TH8800" savlm="strong:H03045">to know</w> <transChange type="added">it</transChange>, <w lemma="strong:H03201" morph="strongMorph:TH8799" savlm="strong:H03201">yet shall he not be able</w> <w lemma="strong:H04672" morph="strongMorph:TH8800" savlm="strong:H04672">to find</w> <transChange type="added">it</transChange>. <chapter chapterTitle="CHAPTER 8." eID="gen716" osisID="Eccl.8"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Ecclesiastes 8:17: <span style="font:Gentium;" ><w lemma="strong:H07200" morph="strongMorph:TH8804" savlm="strong:H07200">Then I beheld</w> <w lemma="strong:H04639" savlm="strong:H04639">all the work</w> <w lemma="strong:H0430" savlm="strong:H0430">of God</w>, <w lemma="strong:H0120" savlm="strong:H0120">that a man</w> <w lemma="strong:H03201" morph="strongMorph:TH8799" savlm="strong:H03201">cannot</w> <w lemma="strong:H04672" morph="strongMorph:TH8800" savlm="strong:H04672">find out</w> <w lemma="strong:H04639" savlm="strong:H04639">the work</w> <w lemma="strong:H06213" morph="strongMorph:TH8738" savlm="strong:H06213">that is done</w> <w lemma="strong:H08121" savlm="strong:H08121">under the sun</w>: <w lemma="strong:H0834" savlm="strong:H0834">because</w> <w lemma="strong:H07945" savlm="strong:H07945">though</w> <w lemma="strong:H0120" savlm="strong:H0120">a man</w> <w lemma="strong:H05998" morph="strongMorph:TH8799" savlm="strong:H05998">labour</w> to seek <transChange type="added">it</transChange> <w lemma="strong:H01245" morph="strongMorph:TH8763" savlm="strong:H01245">out</w>, <w lemma="strong:H04672" morph="strongMorph:TH8799" savlm="strong:H04672">yet he shall not find</w> <transChange type="added">it</transChange>; <w lemma="strong:H02450" savlm="strong:H02450">yea further; though a wise</w> <transChange type="added">man</transChange> <w lemma="strong:H0559" morph="strongMorph:TH8799" savlm="strong:H0559">think</w> <w lemma="strong:H03045" morph="strongMorph:TH8800" savlm="strong:H03045">to know</w> <transChange type="added">it</transChange>, <w lemma="strong:H03201" morph="strongMorph:TH8799" savlm="strong:H03201">yet shall he not be able</w> <w lemma="strong:H04672" morph="strongMorph:TH8800" savlm="strong:H04672">to find</w> <transChange type="added">it</transChange>. <chapter chapterTitle="CHAPTER 8." eID="gen716" osisID="Eccl.8"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Ecclesiastes 9:1: <span style="font:Gentium;" ><w lemma="strong:H05414" morph="strongMorph:TH8804" savlm="strong:H05414">For all this I considered</w> <w lemma="strong:H03820" savlm="strong:H03820">in my heart</w> <w lemma="strong:H0952" morph="strongMorph:TH8800" savlm="strong:H0952">even to declare</w> <w lemma="strong:H06662" savlm="strong:H06662">all this, that the righteous</w>, <w lemma="strong:H02450" savlm="strong:H02450">and the wise</w>, <w lemma="strong:H05652" savlm="strong:H05652">and their works</w>, <transChange type="added">are</transChange> <w lemma="strong:H03027" savlm="strong:H03027">in the hand</w> <w lemma="strong:H0430" savlm="strong:H0430">of God</w>: <w lemma="strong:H0120" savlm="strong:H0120">no man</w> <w lemma="strong:H03045" morph="strongMorph:TH8802" savlm="strong:H03045">knoweth</w> <w lemma="strong:H01571" savlm="strong:H01571">either</w> <w lemma="strong:H0160" savlm="strong:H0160">love</w> <w lemma="strong:H08135" savlm="strong:H08135">or hatred</w> <transChange type="added">by</transChange> all <transChange type="added">that is</transChange> <w lemma="strong:H06440" savlm="strong:H06440">before</w> them.<note swordFootnote="1" type="study"></note></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Isaiah 10:7: <span style="font:Gentium;" ><w lemma="strong:H01819" morph="strongMorph:TH8762" savlm="strong:H01819">Howbeit he meaneth</w> <w lemma="strong:H03824" savlm="strong:H03824">not so, neither doth his heart</w> <w lemma="strong:H02803" morph="strongMorph:TH8799" savlm="strong:H02803">think</w> so; but <transChange type="added">it is</transChange> <w lemma="strong:H03824" savlm="strong:H03824">in his heart</w> <w lemma="strong:H08045" morph="strongMorph:TH8687" savlm="strong:H08045">to destroy</w> <w lemma="strong:H03772" morph="strongMorph:TH8687" savlm="strong:H03772">and cut off</w> <w lemma="strong:H01471" savlm="strong:H01471">nations</w> <w lemma="strong:H04592" savlm="strong:H04592">not a few</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Jeremiah 23:26: <span style="font:Gentium;" >How long shall <transChange type="added">this</transChange> <w lemma="strong:H03426" savlm="strong:H03426">be</w> <w lemma="strong:H03820" savlm="strong:H03820">in the heart</w> <w lemma="strong:H05030" savlm="strong:H05030">of the prophets</w> <w lemma="strong:H05012" morph="strongMorph:TH8737" savlm="strong:H05012">that prophesy</w> <w lemma="strong:H08267" savlm="strong:H08267">lies</w>? yea, <transChange type="added">they are</transChange> <w lemma="strong:H05030" savlm="strong:H05030">prophets</w> <w lemma="strong:H08649" savlm="strong:H08649">of the deceit</w> <w lemma="strong:H03820" savlm="strong:H03820">of their own heart</w>;</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Jeremiah 23:27: <span style="font:Gentium;" ><w lemma="strong:H02803" morph="strongMorph:TH8802" savlm="strong:H02803">Which think</w> <w lemma="strong:H05971" savlm="strong:H05971">to cause my people</w> <w lemma="strong:H07911" morph="strongMorph:TH8687" savlm="strong:H07911">to forget</w> <w lemma="strong:H08034" savlm="strong:H08034">my name</w> <w lemma="strong:H02472" savlm="strong:H02472">by their dreams</w> <w lemma="strong:H05608" morph="strongMorph:TH8762" savlm="strong:H05608">which they tell</w> <w lemma="strong:H0376" savlm="strong:H0376">every man</w> <w lemma="strong:H07453" savlm="strong:H07453">to his neighbour</w>, <w lemma="strong:H01" savlm="strong:H01">as their fathers</w> <w lemma="strong:H07911" morph="strongMorph:TH8804" savlm="strong:H07911">have forgotten</w> <w lemma="strong:H08034" savlm="strong:H08034">my name</w> <w lemma="strong:H01168" savlm="strong:H01168">for Baal</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Matthew 9:4: <span style="font:Gentium;" ><w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="1">And</w> <w lemma="strong:G3588 strong:G2424 lemma.TR:ο lemma.TR:ιησους" morph="robinson:T-NSM robinson:N-NSM" savlm="strong:G3588 strong:G2424 lemma.TR:ο lemma.TR:ιησους" src="3 4">Jesus</w> <w lemma="strong:G3708 lemma.TR:ιδων" morph="robinson:V-2AAP-NSM" savlm="strong:G3708 lemma.TR:ιδων" src="2">knowing</w> <w lemma="strong:G846 lemma.TR:αυτων" morph="robinson:P-GPM" savlm="strong:G846 lemma.TR:αυτων" src="7">their</w> <w lemma="strong:G3588 strong:G1761 lemma.TR:τας lemma.TR:ενθυμησεις" morph="robinson:T-APF robinson:N-APF" savlm="strong:G3588 strong:G1761 lemma.TR:τας lemma.TR:ενθυμησεις" src="5 6">thoughts</w> <w lemma="strong:G3004 lemma.TR:ειπεν" morph="robinson:V-2AAI-3S" savlm="strong:G3004 lemma.TR:ειπεν" src="8">said</w>, <q marker="" who="Jesus"><w lemma="strong:G2443 lemma.TR:ινα" morph="robinson:CONJ" savlm="strong:G2443 lemma.TR:ινα" src="9"/><w lemma="strong:G5101 lemma.TR:τι" morph="robinson:I-NSN" savlm="strong:G5101 lemma.TR:τι" src="10">Wherefore</w> <w lemma="strong:G1760 lemma.TR:ενθυμεισθε" morph="robinson:V-PNI-2P" savlm="strong:G1760 lemma.TR:ενθυμεισθε" src="12">think</w> <w lemma="strong:G4771 lemma.TR:υμεις" morph="robinson:P-2NP" savlm="strong:G4771 lemma.TR:υμεις" src="11">ye</w> <w lemma="strong:G4190 lemma.TR:πονηρα" morph="robinson:A-APN" savlm="strong:G4190 lemma.TR:πονηρα" src="13">evil</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="14">in</w> <w lemma="strong:G4771 lemma.TR:υμων" morph="robinson:P-2GP" savlm="strong:G4771 lemma.TR:υμων" src="17">your</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:ταις lemma.TR:καρδιαις" morph="robinson:T-DPF robinson:N-DPF" savlm="strong:G3588 strong:G2588 lemma.TR:ταις lemma.TR:καρδιαις" src="15 16">hearts</w>?</q></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>I Corinthians 4:5: <span style="font:Gentium;" ><w lemma="strong:G3588 lemma.TR:τα" morph="robinson:T-APN" savlm="strong:G3588 lemma.TR:τα" src="15"/><w lemma="strong:G5620 lemma.TR:ωστε" morph="robinson:CONJ" savlm="strong:G5620 lemma.TR:ωστε" src="1">Therefore</w> <w lemma="strong:G2919 lemma.TR:κρινετε" morph="robinson:V-PAM-2P" savlm="strong:G2919 lemma.TR:κρινετε" src="6">judge</w> <w lemma="strong:G5100 lemma.TR:τι" morph="robinson:X-ASN" savlm="strong:G5100 lemma.TR:τι" src="5"/><w lemma="strong:G3361 lemma.TR:μη" morph="robinson:PRT-N" savlm="strong:G3361 lemma.TR:μη" src="2">nothing</w> <w lemma="strong:G4253 lemma.TR:προ" morph="robinson:PREP" savlm="strong:G4253 lemma.TR:προ" src="3">before</w> <w lemma="strong:G302 lemma.TR:αν" morph="robinson:PRT" savlm="strong:G302 lemma.TR:αν" src="8"/><w lemma="strong:G2540 lemma.TR:καιρου" morph="robinson:N-GSM" savlm="strong:G2540 lemma.TR:καιρου" src="4">the time</w>, <w lemma="strong:G2193 lemma.TR:εως" morph="robinson:ADV" savlm="strong:G2193 lemma.TR:εως" src="7">until</w> <w lemma="strong:G3588 strong:G2962 lemma.TR:ο lemma.TR:κυριος" morph="robinson:T-NSM robinson:N-NSM" savlm="strong:G3588 strong:G2962 lemma.TR:ο lemma.TR:κυριος" src="10 11">the Lord</w> <w lemma="strong:G2064 lemma.TR:ελθη" morph="robinson:V-2AAS-3S" savlm="strong:G2064 lemma.TR:ελθη" src="9">come</w>, <w lemma="strong:G3739 lemma.TR:ος" morph="robinson:R-NSM" savlm="strong:G3739 lemma.TR:ος" src="12">who</w> <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="13">both</w> <w lemma="strong:G5461 lemma.TR:φωτισει" morph="robinson:V-FAI-3S" savlm="strong:G5461 lemma.TR:φωτισει" src="14">will bring to light</w> <w lemma="strong:G2927 lemma.TR:κρυπτα" morph="robinson:A-APN" savlm="strong:G2927 lemma.TR:κρυπτα" src="16">the hidden things</w> <w lemma="strong:G3588 strong:G4655 lemma.TR:του lemma.TR:σκοτους" morph="robinson:T-GSN robinson:N-GSN" savlm="strong:G3588 strong:G4655 lemma.TR:του lemma.TR:σκοτους" src="17 18">of darkness</w>, <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="19">and</w> <w lemma="strong:G5319 lemma.TR:φανερωσει" morph="robinson:V-FAI-3S" savlm="strong:G5319 lemma.TR:φανερωσει" src="20">will make manifest</w> <w lemma="strong:G3588 strong:G1012 lemma.TR:τας lemma.TR:βουλας" morph="robinson:T-APF robinson:N-APF" savlm="strong:G3588 strong:G1012 lemma.TR:τας lemma.TR:βουλας" src="21 22">the counsels</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:των lemma.TR:καρδιων" morph="robinson:T-GPF robinson:N-GPF" savlm="strong:G3588 strong:G2588 lemma.TR:των lemma.TR:καρδιων" src="23 24">of the hearts</w>: <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="25">and</w> <w lemma="strong:G5119 lemma.TR:τοτε" morph="robinson:ADV" savlm="strong:G5119 lemma.TR:τοτε" src="26">then</w> <w lemma="strong:G1096 lemma.TR:γενησεται" morph="robinson:V-FDI-3S" savlm="strong:G1096 lemma.TR:γενησεται" src="29" type="x-split-2726">shall</w> <w lemma="strong:G1538 lemma.TR:εκαστω" morph="robinson:A-DSM" savlm="strong:G1538 lemma.TR:εκαστω" src="30">every man</w> <w lemma="strong:G1096 lemma.TR:γενησεται" morph="robinson:V-FDI-3S" savlm="strong:G1096 lemma.TR:γενησεται" src="29" type="x-split-2726">have</w> <w lemma="strong:G3588 strong:G1868 lemma.TR:ο lemma.TR:επαινος" morph="robinson:T-NSM robinson:N-NSM" savlm="strong:G3588 strong:G1868 lemma.TR:ο lemma.TR:επαινος" src="27 28">praise</w> <w lemma="strong:G575 lemma.TR:απο" morph="robinson:PREP" savlm="strong:G575 lemma.TR:απο" src="31">of</w> <w lemma="strong:G3588 strong:G2316 lemma.TR:του lemma.TR:θεου" morph="robinson:T-GSM robinson:N-GSM" savlm="strong:G3588 strong:G2316 lemma.TR:του lemma.TR:θεου" src="32 33">God</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>I Corinthians 4:6: <span style="font:Gentium;" ><w lemma="strong:G3588 lemma.TR:του" morph="robinson:T-GSM" savlm="strong:G3588 lemma.TR:του" src="29"/><w lemma="strong:G3588 lemma.TR:το" morph="robinson:T-ASN" savlm="strong:G3588 lemma.TR:το" src="15"/><w lemma="strong:G1161 lemma.TR:δε" morph="robinson:CONJ" savlm="strong:G1161 lemma.TR:δε" src="2">And</w> <w lemma="strong:G3778 lemma.TR:ταυτα" morph="robinson:D-APN" savlm="strong:G3778 lemma.TR:ταυτα" src="1">these things</w>, <w lemma="strong:G80 lemma.TR:αδελφοι" morph="robinson:N-VPM" savlm="strong:G80 lemma.TR:αδελφοι" src="3">brethren</w>, <w lemma="strong:G3345 lemma.TR:μετεσχηματισα" morph="robinson:V-AAI-1S" savlm="strong:G3345 lemma.TR:μετεσχηματισα" src="4">I have in a figure transferred</w> <w lemma="strong:G1519 lemma.TR:εις" morph="robinson:PREP" savlm="strong:G1519 lemma.TR:εις" src="5">to</w> <w lemma="strong:G1683 lemma.TR:εμαυτον" morph="robinson:F-1ASM" savlm="strong:G1683 lemma.TR:εμαυτον" src="6">myself</w> <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="7">and</w> <transChange type="added">to</transChange> <w lemma="strong:G625 lemma.TR:απολλω" morph="robinson:N-ASM" savlm="strong:G625 lemma.TR:απολλω" src="8">Apollos</w> <w lemma="strong:G1223 lemma.TR:δι" morph="robinson:PREP" savlm="strong:G1223 lemma.TR:δι" src="9">for</w> <w lemma="strong:G4771 lemma.TR:υμας" morph="robinson:P-2AP" savlm="strong:G4771 lemma.TR:υμας" src="10">your sakes</w>; <w lemma="strong:G2443 lemma.TR:ινα" morph="robinson:CONJ" savlm="strong:G2443 lemma.TR:ινα" src="11">that</w> <w lemma="strong:G3129 lemma.TR:μαθητε" morph="robinson:V-2AAS-2P" savlm="strong:G3129 lemma.TR:μαθητε" src="14">ye might learn</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="12">in</w> <w lemma="strong:G1473 lemma.TR:ημιν" morph="robinson:P-1DP" savlm="strong:G1473 lemma.TR:ημιν" src="13">us</w> <w lemma="strong:G3361 lemma.TR:μη" morph="robinson:PRT-N" savlm="strong:G3361 lemma.TR:μη" src="16">not</w> <w lemma="strong:G5426 lemma.TR:φρονειν" morph="robinson:V-PAN" savlm="strong:G5426 lemma.TR:φρονειν" src="20">to think</w> <transChange type="added">of men</transChange> <w lemma="strong:G5228 lemma.TR:υπερ" morph="robinson:PREP" savlm="strong:G5228 lemma.TR:υπερ" src="17">above</w> <w lemma="strong:G3739 lemma.TR:ο" morph="robinson:R-ASN" savlm="strong:G3739 lemma.TR:ο" src="18">that which</w> <w lemma="strong:G1125 lemma.TR:γεγραπται" morph="robinson:V-RPI-3S" savlm="strong:G1125 lemma.TR:γεγραπται" src="19">is written</w>, <w lemma="strong:G2443 lemma.TR:ινα" morph="robinson:CONJ" savlm="strong:G2443 lemma.TR:ινα" src="21">that</w> <w lemma="strong:G3361 lemma.TR:μη" morph="robinson:PRT-N" savlm="strong:G3361 lemma.TR:μη" src="22">no</w> <w lemma="strong:G1520 lemma.TR:εις" morph="robinson:A-NSM" savlm="strong:G1520 lemma.TR:εις" src="23">one</w> <w lemma="strong:G5448 lemma.TR:φυσιουσθε" morph="robinson:V-PPS-2P" savlm="strong:G5448 lemma.TR:φυσιουσθε" src="27">of you be puffed up</w> <w lemma="strong:G5228 lemma.TR:υπερ" morph="robinson:PREP" savlm="strong:G5228 lemma.TR:υπερ" src="24">for</w> <w lemma="strong:G1520 lemma.TR:ενος" morph="robinson:A-GSM" savlm="strong:G1520 lemma.TR:ενος" src="26">one</w> <w lemma="strong:G2596 lemma.TR:κατα" morph="robinson:PREP" savlm="strong:G2596 lemma.TR:κατα" src="28">against</w> <w lemma="strong:G2087 lemma.TR:ετερου" morph="robinson:A-GSM" savlm="strong:G2087 lemma.TR:ετερου" src="30">another</w>.<w lemma="strong:G3588 lemma.TR:του" morph="robinson:T-GSM" savlm="strong:G3588 lemma.TR:του" src="25"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>I Corinthians 7:36: <span style="font:Gentium;" ><w lemma="strong:G1161 lemma.TR:δε" morph="robinson:CONJ" savlm="strong:G1161 lemma.TR:δε" src="2">But</w> <w lemma="strong:G1487 lemma.TR:ει" morph="robinson:COND" savlm="strong:G1487 lemma.TR:ει" src="1">if</w> <w lemma="strong:G5100 lemma.TR:τις" morph="robinson:X-NSM" savlm="strong:G5100 lemma.TR:τις" src="3">any man</w> <w lemma="strong:G3543 lemma.TR:νομιζει" morph="robinson:V-PAI-3S" savlm="strong:G3543 lemma.TR:νομιζει" src="9">think</w> <w lemma="strong:G3739 lemma.TR:ο" morph="robinson:R-ASN" savlm="strong:G3739 lemma.TR:ο" src="17">that</w> <w lemma="strong:G807 lemma.TR:ασχημονειν" morph="robinson:V-PAN" savlm="strong:G807 lemma.TR:ασχημονειν" src="4" type="x-split-2763">he behaveth</w> <w lemma="strong:G846 lemma.TR:αυτου" morph="robinson:P-GSM" savlm="strong:G846 lemma.TR:αυτου" src="8">himself</w> <w lemma="strong:G807 lemma.TR:ασχημονειν" morph="robinson:V-PAN" savlm="strong:G807 lemma.TR:ασχημονειν" src="4" type="x-split-2763">uncomely</w> <w lemma="strong:G1909 lemma.TR:επι" morph="robinson:PREP" savlm="strong:G1909 lemma.TR:επι" src="5">toward</w> <w lemma="strong:G3588 strong:G3933 lemma.TR:την lemma.TR:παρθενον" morph="robinson:T-ASF robinson:N-ASF" savlm="strong:G3588 strong:G3933 lemma.TR:την lemma.TR:παρθενον" src="6 7">his virgin</w>, <w lemma="strong:G1437 lemma.TR:εαν" morph="robinson:COND" savlm="strong:G1437 lemma.TR:εαν" src="10">if</w> <w lemma="strong:G1510 lemma.TR:η" morph="robinson:V-PAS-3S" savlm="strong:G1510 lemma.TR:η" src="11">she pass</w> <w lemma="strong:G5230 lemma.TR:υπερακμος" morph="robinson:A-NSM" savlm="strong:G5230 lemma.TR:υπερακμος" src="12" type="x-split-2764">the flower of</w> <transChange type="added">her</transChange> <w lemma="strong:G5230 lemma.TR:υπερακμος" morph="robinson:A-NSM" savlm="strong:G5230 lemma.TR:υπερακμος" src="12" type="x-split-2764">age</w>, <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="13">and</w> <w lemma="strong:G3784 lemma.TR:οφειλει" morph="robinson:V-PAI-3S" savlm="strong:G3784 lemma.TR:οφειλει" src="15">need</w> <w lemma="strong:G3779 lemma.TR:ουτως" morph="robinson:ADV" savlm="strong:G3779 lemma.TR:ουτως" src="14">so</w> <w lemma="strong:G1096 lemma.TR:γινεσθαι" morph="robinson:V-PNN" savlm="strong:G1096 lemma.TR:γινεσθαι" src="16">require</w>, <w lemma="strong:G4160 lemma.TR:ποιειτω" morph="robinson:V-PAM-3S" savlm="strong:G4160 lemma.TR:ποιειτω" src="19">let him do</w> <w lemma="strong:G2309 lemma.TR:θελει" morph="robinson:V-PAI-3S" savlm="strong:G2309 lemma.TR:θελει" src="18">what he will</w>, <w lemma="strong:G264 lemma.TR:αμαρτανει" morph="robinson:V-PAI-3S" savlm="strong:G264 lemma.TR:αμαρτανει" src="21">he sinneth</w> <w lemma="strong:G3756 lemma.TR:ουχ" morph="robinson:PRT-N" savlm="strong:G3756 lemma.TR:ουχ" src="20">not</w>: <w lemma="strong:G1060 lemma.TR:γαμειτωσαν" morph="robinson:V-PAM-3P" savlm="strong:G1060 lemma.TR:γαμειτωσαν" src="22">let them marry</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>I Corinthians 7:37: <span style="font:Gentium;" ><w lemma="strong:G1161 lemma.TR:δε" morph="robinson:CONJ" savlm="strong:G1161 lemma.TR:δε" src="2">Nevertheless</w> <w lemma="strong:G3739 lemma.TR:ος" morph="robinson:R-NSM" savlm="strong:G3739 lemma.TR:ος" src="1">he that</w> <w lemma="strong:G2476 lemma.TR:εστηκεν" morph="robinson:V-RAI-3S" savlm="strong:G2476 lemma.TR:εστηκεν" src="3">standeth</w> <w lemma="strong:G1476 lemma.TR:εδραιος" morph="robinson:A-NSM" savlm="strong:G1476 lemma.TR:εδραιος" src="4">stedfast</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="5">in</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" morph="robinson:T-DSF robinson:N-DSF" savlm="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" src="6 7">his heart</w>, <w lemma="strong:G2192 lemma.TR:εχων" morph="robinson:V-PAP-NSM" savlm="strong:G2192 lemma.TR:εχων" src="9">having</w> <w lemma="strong:G3361 lemma.TR:μη" morph="robinson:PRT-N" savlm="strong:G3361 lemma.TR:μη" src="8">no</w> <w lemma="strong:G318 lemma.TR:αναγκην" morph="robinson:N-ASF" savlm="strong:G318 lemma.TR:αναγκην" src="10">necessity</w>, <w lemma="strong:G1161 lemma.TR:δε" morph="robinson:CONJ" savlm="strong:G1161 lemma.TR:δε" src="12">but</w> <w lemma="strong:G2192 lemma.TR:εχει" morph="robinson:V-PAI-3S" savlm="strong:G2192 lemma.TR:εχει" src="13">hath</w> <w lemma="strong:G1849 lemma.TR:εξουσιαν" morph="robinson:N-ASF" savlm="strong:G1849 lemma.TR:εξουσιαν" src="11">power</w> <w lemma="strong:G4012 lemma.TR:περι" morph="robinson:PREP" savlm="strong:G4012 lemma.TR:περι" src="14">over</w> <w lemma="strong:G3588 strong:G2398 lemma.TR:του lemma.TR:ιδιου" morph="robinson:T-GSN robinson:A-GSN" savlm="strong:G3588 strong:G2398 lemma.TR:του lemma.TR:ιδιου" src="15 16">his own</w> <w lemma="strong:G2307 lemma.TR:θεληματος" morph="robinson:N-GSN" savlm="strong:G2307 lemma.TR:θεληματος" src="17">will</w>, <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="18">and</w> <w lemma="strong:G2919 lemma.TR:κεκρικεν" morph="robinson:V-RAI-3S" savlm="strong:G2919 lemma.TR:κεκρικεν" src="20" type="x-split-2765">hath</w> <w lemma="strong:G3778 lemma.TR:τουτο" morph="robinson:D-ASN" savlm="strong:G3778 lemma.TR:τουτο" src="19">so</w> <w lemma="strong:G2919 lemma.TR:κεκρικεν" morph="robinson:V-RAI-3S" savlm="strong:G2919 lemma.TR:κεκρικεν" src="20" type="x-split-2765">decreed</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="21">in</w> <w lemma="strong:G846 lemma.TR:αυτου" morph="robinson:P-GSM" savlm="strong:G846 lemma.TR:αυτου" src="24">his</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" morph="robinson:T-DSF robinson:N-DSF" savlm="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" src="22 23">heart</w> <w lemma="strong:G3588 strong:G5083 lemma.TR:του lemma.TR:τηρειν" morph="robinson:T-GSN robinson:V-PAN" savlm="strong:G3588 strong:G5083 lemma.TR:του lemma.TR:τηρειν" src="25 26">that he will keep</w> <w lemma="strong:G1438 lemma.TR:εαυτου" morph="robinson:F-3GSM" savlm="strong:G1438 lemma.TR:εαυτου" src="28">his</w> <w lemma="strong:G3588 strong:G3933 lemma.TR:την lemma.TR:παρθενον" morph="robinson:T-ASF robinson:N-ASF" savlm="strong:G3588 strong:G3933 lemma.TR:την lemma.TR:παρθενον" src="27 29">virgin</w>, <w lemma="strong:G4160 lemma.TR:ποιει" morph="robinson:V-PAI-3S" savlm="strong:G4160 lemma.TR:ποιει" src="31">doeth</w> <w lemma="strong:G2573 lemma.TR:καλως" morph="robinson:ADV" savlm="strong:G2573 lemma.TR:καλως" src="30">well</w>.</span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Philippians 1:7: <span style="font:Gentium;" ><w lemma="strong:G2531 lemma.TR:καθως" morph="robinson:ADV" savlm="strong:G2531 lemma.TR:καθως" src="1">Even as</w> <w lemma="strong:G1510 lemma.TR:εστιν" morph="robinson:V-PAI-3S" savlm="strong:G1510 lemma.TR:εστιν" src="2">it is</w> <w lemma="strong:G1342 lemma.TR:δικαιον" morph="robinson:A-NSN" savlm="strong:G1342 lemma.TR:δικαιον" src="3">meet</w> <w lemma="strong:G1473 lemma.TR:εμοι" morph="robinson:P-1DS" savlm="strong:G1473 lemma.TR:εμοι" src="4">for me</w> <w lemma="strong:G5426 lemma.TR:φρονειν" morph="robinson:V-PAN" savlm="strong:G5426 lemma.TR:φρονειν" src="6">to think</w> <w lemma="strong:G3778 lemma.TR:τουτο" morph="robinson:D-ASN" savlm="strong:G3778 lemma.TR:τουτο" src="5">this</w> <w lemma="strong:G5228 lemma.TR:υπερ" morph="robinson:PREP" savlm="strong:G5228 lemma.TR:υπερ" src="7">of</w> <w lemma="strong:G4771 lemma.TR:υμων" morph="robinson:P-2GP" savlm="strong:G4771 lemma.TR:υμων" src="9">you</w> <w lemma="strong:G3956 lemma.TR:παντων" morph="robinson:A-GPM" savlm="strong:G3956 lemma.TR:παντων" src="8">all</w>, <w lemma="strong:G1223 lemma.TR:δια" morph="robinson:PREP" savlm="strong:G1223 lemma.TR:δια" src="10">because</w> <w lemma="strong:G1473 lemma.TR:με" morph="robinson:P-1AS" savlm="strong:G1473 lemma.TR:με" src="13">I</w> <w lemma="strong:G2192 lemma.TR:εχειν" morph="robinson:V-PAN" savlm="strong:G2192 lemma.TR:εχειν" src="12">have</w> <w lemma="strong:G4771 lemma.TR:υμας" morph="robinson:P-2AP" savlm="strong:G4771 lemma.TR:υμας" src="17">you</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="14">in</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" morph="robinson:T-DSF robinson:N-DSF" savlm="strong:G3588 strong:G2588 lemma.TR:τη lemma.TR:καρδια" src="15 16">my heart</w>; <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="18">inasmuch as</w> <w lemma="strong:G5037 lemma.TR:τε" morph="robinson:PRT" savlm="strong:G5037 lemma.TR:τε" src="19">both</w> <w lemma="strong:G3588 strong:G1199 lemma.TR:τοις lemma.TR:δεσμοις" morph="robinson:T-DPM robinson:N-DPM" savlm="strong:G3588 strong:G1199 lemma.TR:τοις lemma.TR:δεσμοις" src="20 21" type="x-split-3067">in</w> <w lemma="strong:G1473 lemma.TR:μου" morph="robinson:P-1GS" savlm="strong:G1473 lemma.TR:μου" src="22">my</w> <w lemma="strong:G3588 strong:G1199 lemma.TR:τοις lemma.TR:δεσμοις" morph="robinson:T-DPM robinson:N-DPM" savlm="strong:G3588 strong:G1199 lemma.TR:τοις lemma.TR:δεσμοις" src="20 21" type="x-split-3067">bonds</w>, <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="23">and</w> <w lemma="strong:G3588 strong:G627 lemma.TR:τη lemma.TR:απολογια" morph="robinson:T-DSF robinson:N-DSF" savlm="strong:G3588 strong:G627 lemma.TR:τη lemma.TR:απολογια" src="24 25">in the defence</w> <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="26">and</w> <w lemma="strong:G951 lemma.TR:βεβαιωσει" morph="robinson:N-DSF" savlm="strong:G951 lemma.TR:βεβαιωσει" src="27">confirmation</w> <w lemma="strong:G3588 strong:G2098 lemma.TR:του lemma.TR:ευαγγελιου" morph="robinson:T-GSN robinson:N-GSN" savlm="strong:G3588 strong:G2098 lemma.TR:του lemma.TR:ευαγγελιου" src="28 29">of the gospel</w>, <w lemma="strong:G4771 lemma.TR:υμας" morph="robinson:P-2AP" savlm="strong:G4771 lemma.TR:υμας" src="35">ye</w> <w lemma="strong:G3956 lemma.TR:παντας" morph="robinson:A-APM" savlm="strong:G3956 lemma.TR:παντας" src="34">all</w> <w lemma="strong:G1510 lemma.TR:οντας" morph="robinson:V-PAP-APM" savlm="strong:G1510 lemma.TR:οντας" src="36">are</w> <w lemma="strong:G4791 lemma.TR:συγκοινωνους" morph="robinson:N-APM" savlm="strong:G4791 lemma.TR:συγκοινωνους" src="30">partakers</w> <w lemma="strong:G3588 strong:G5485 lemma.TR:της lemma.TR:χαριτος" morph="robinson:T-GSF robinson:N-GSF" savlm="strong:G3588 strong:G5485 lemma.TR:της lemma.TR:χαριτος" src="32 33" type="x-split-3068">of</w> <w lemma="strong:G1473 lemma.TR:μου" morph="robinson:P-1GS" savlm="strong:G1473 lemma.TR:μου" src="31">my</w> <w lemma="strong:G3588 strong:G5485 lemma.TR:της lemma.TR:χαριτος" morph="robinson:T-GSF robinson:N-GSF" savlm="strong:G3588 strong:G5485 lemma.TR:της lemma.TR:χαριτος" src="32 33" type="x-split-3068">grace</w>.<w lemma="strong:G3588 lemma.TR:το" morph="robinson:T-ASN" savlm="strong:G3588 lemma.TR:το" src="11"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Philippians 4:7: <span style="font:Gentium;" ><w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="1">And</w> <w lemma="strong:G3588 strong:G1515 lemma.TR:η lemma.TR:ειρηνη" morph="robinson:T-NSF robinson:N-NSF" savlm="strong:G3588 strong:G1515 lemma.TR:η lemma.TR:ειρηνη" src="2 3">the peace</w> <w lemma="strong:G3588 strong:G2316 lemma.TR:του lemma.TR:θεου" morph="robinson:T-GSM robinson:N-GSM" savlm="strong:G3588 strong:G2316 lemma.TR:του lemma.TR:θεου" src="4 5">of God</w>, <w lemma="strong:G5242 lemma.TR:υπερεχουσα" morph="robinson:V-PAP-NSF" savlm="strong:G5242 lemma.TR:υπερεχουσα" src="7">which passeth</w> <w lemma="strong:G3956 lemma.TR:παντα" morph="robinson:A-ASM" savlm="strong:G3956 lemma.TR:παντα" src="8">all</w> <w lemma="strong:G3563 lemma.TR:νουν" morph="robinson:N-ASM" savlm="strong:G3563 lemma.TR:νουν" src="9">understanding</w>, <w lemma="strong:G5432 lemma.TR:φρουρησει" morph="robinson:V-FAI-3S" savlm="strong:G5432 lemma.TR:φρουρησει" src="10">shall keep</w> <w lemma="strong:G4771 lemma.TR:υμων" morph="robinson:P-2GP" savlm="strong:G4771 lemma.TR:υμων" src="13">your</w> <w lemma="strong:G3588 strong:G2588 lemma.TR:τας lemma.TR:καρδιας" morph="robinson:T-APF robinson:N-APF" savlm="strong:G3588 strong:G2588 lemma.TR:τας lemma.TR:καρδιας" src="11 12">hearts</w> <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="14">and</w> <w lemma="strong:G4771 lemma.TR:υμων" morph="robinson:P-2GP" savlm="strong:G4771 lemma.TR:υμων" src="17"/><w lemma="strong:G3588 strong:G3540 lemma.TR:τα lemma.TR:νοηματα" morph="robinson:T-APN robinson:N-APN" savlm="strong:G3588 strong:G3540 lemma.TR:τα lemma.TR:νοηματα" src="15 16">minds</w> <w lemma="strong:G1722 lemma.TR:εν" morph="robinson:PREP" savlm="strong:G1722 lemma.TR:εν" src="18">through</w> <w lemma="strong:G5547 lemma.TR:χριστω" morph="robinson:N-DSM" savlm="strong:G5547 lemma.TR:χριστω" src="19">Christ</w> <w lemma="strong:G2424 lemma.TR:ιησου" morph="robinson:N-DSM" savlm="strong:G2424 lemma.TR:ιησου" src="20">Jesus</w>.<w lemma="strong:G3588 lemma.TR:η" morph="robinson:T-NSF" savlm="strong:G3588 lemma.TR:η" src="6"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>Philippians 4:8: <span style="font:Gentium;" ><w lemma="strong:G3063 lemma.TR:λοιπον" morph="robinson:A-ASN" savlm="strong:G3063 lemma.TR:λοιπον" src="2">Finally</w>, <w lemma="strong:G80 lemma.TR:αδελφοι" morph="robinson:N-VPM" savlm="strong:G80 lemma.TR:αδελφοι" src="3">brethren</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="4">whatsoever things</w> <w lemma="strong:G1510 lemma.TR:εστιν" morph="robinson:V-PAI-3S" savlm="strong:G1510 lemma.TR:εστιν" src="5">are</w> <w lemma="strong:G227 lemma.TR:αληθη" morph="robinson:A-NPN" savlm="strong:G227 lemma.TR:αληθη" src="6">true</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="7">whatsoever things</w> <transChange type="added">are</transChange> <w lemma="strong:G4586 lemma.TR:σεμνα" morph="robinson:A-NPN" savlm="strong:G4586 lemma.TR:σεμνα" src="8">honest</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="9">whatsoever things</w> <transChange type="added">are</transChange> <w lemma="strong:G1342 lemma.TR:δικαια" morph="robinson:A-NPN" savlm="strong:G1342 lemma.TR:δικαια" src="10">just</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="11">whatsoever things</w> <transChange type="added">are</transChange> <w lemma="strong:G53 lemma.TR:αγνα" morph="robinson:A-NPN" savlm="strong:G53 lemma.TR:αγνα" src="12">pure</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="13">whatsoever things</w> <transChange type="added">are</transChange> <w lemma="strong:G4375 lemma.TR:προσφιλη" morph="robinson:A-NPN" savlm="strong:G4375 lemma.TR:προσφιλη" src="14">lovely</w>, <w lemma="strong:G3745 lemma.TR:οσα" morph="robinson:K-NPN" savlm="strong:G3745 lemma.TR:οσα" src="15">whatsoever things</w> <transChange type="added">are</transChange> <w lemma="strong:G2163 lemma.TR:ευφημα" morph="robinson:A-NPN" savlm="strong:G2163 lemma.TR:ευφημα" src="16">of good report</w>; <w lemma="strong:G1487 lemma.TR:ει" morph="robinson:COND" savlm="strong:G1487 lemma.TR:ει" src="17">if</w> <transChange type="added">there be</transChange> <w lemma="strong:G5100 lemma.TR:τις" morph="robinson:X-NSF" savlm="strong:G5100 lemma.TR:τις" src="18">any</w> <w lemma="strong:G703 lemma.TR:αρετη" morph="robinson:N-NSF" savlm="strong:G703 lemma.TR:αρετη" src="19">virtue</w>, <w lemma="strong:G2532 lemma.TR:και" morph="robinson:CONJ" savlm="strong:G2532 lemma.TR:και" src="20">and</w> <w lemma="strong:G1487 lemma.TR:ει" morph="robinson:COND" savlm="strong:G1487 lemma.TR:ει" src="21">if</w> <transChange type="added">there be</transChange> <w lemma="strong:G5100 lemma.TR:τις" morph="robinson:X-NSM" savlm="strong:G5100 lemma.TR:τις" src="22">any</w> <w lemma="strong:G1868 lemma.TR:επαινος" morph="robinson:N-NSM" savlm="strong:G1868 lemma.TR:επαινος" src="23">praise</w>, <w lemma="strong:G3049 lemma.TR:λογιζεσθε" morph="robinson:V-PNM-2P" savlm="strong:G3049 lemma.TR:λογιζεσθε" src="25">think on</w> <w lemma="strong:G3778 lemma.TR:ταυτα" morph="robinson:D-APN" savlm="strong:G3778 lemma.TR:ταυτα" src="24">these things</w>.<w lemma="strong:G3588 lemma.TR:το" morph="robinson:T-ASN" savlm="strong:G3588 lemma.TR:το" src="1"/></span><br />
+(KJV)
+</body></html>
+</span>
+      </p>
+      
+      <p>
+        <span><html><head><meta http-equiv="content-type" content="text/html" charset="UTF-8" lang="en" xml:lang="en"/>
+<style type="text/css"></style></head><body>(KJV)
+</body></html>
+</span>
+      </p>
+      
+      </ul>
+    </div>
+    
+  </main>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="/static/js/strongs-greek-dictionary.js"></script>
+  <script src="/static/js/strongs-hebrew-dictionary.js"></script>
+  <script src="/static/tooltip.js"></script>
+</body>
+</html>
